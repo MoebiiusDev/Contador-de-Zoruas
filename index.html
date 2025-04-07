@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/nav.css">
+    <script src="/js/code.js" defer></script>
+    <title>Contador de Zoruas</title>
+</head>
+
+<body>
+
+    <!-- <img src="img/finalboss.png" class="zoom-abalanza"> -->
+
+    <div class="nav">
+        <nav class="navegador">
+            <img src="img/moebiiuslogo.png" alt="" class="iconnex">
+            <h2 class="moebiius">moebiius</h2>
+        </nav>
+        <img class="loge" src="img/moebiiusloge.png" alt="">
+    </div>
+
+
+    <div class="container">
+        <h1 id="titulo">Contador de Zoruas</h1>
+        <div id="contador">0</div>
+        <button id="aumentar">Aumentar contador</button>
+    </div>
+
+    <!-- Barra de ayuda -->
+
+    <div class="barraDeAyuda">
+        <img src="img/L_Astley.png" alt="">
+        <img src="img/L_Barretta.png" alt="">
+        <img src="img/L_EntidadDeMuerte.png" alt="">
+        <img src="img/L_ES.png" alt="">
+    </div>
+    <div id="mensaje-ayuda" class="mensaje-animado oculto"></div>
+
+
+
+    <!-- Evento con Zorua -->
+    <div id="evento-zorua" class="oculto">
+        <div id="mensaje">¿Quieres ayuda de un Zorua?</div>
+        <img id="zorua-img" src="img/zorua.png" alt="Zorua">
+        <div id="barra-boss-container" class="oculto">
+            <div id="barra-boss"></div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div id="humo"></div>
+    <div id="overlay-boss"></div>
+    <div id="flash-destello"></div>
+
+
+
+
+
+    <!-- Sonidos -->
+    <audio id="sonido-ayuda" src="sound/Risita Ayudante.mp3"></audio>
+    <audio id="sonido-no" src="sound/Negacion.mp3"></audio>
+    <audio id="boss-music" loop>
+        <source src="sound/finalboss.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="sonido-flash" src="sound/destello.mp3"></audio>
+    <audio id="sonido-burla" src="sound/burla.mp3" preload="auto"></audio>
+    <audio id="sonido-burla-boss" src="sound/burla.mp3" preload="auto"></audio>
+    <audio id="sonido-golpe" src="sound/sarten.mp3" preload="auto"></audio>
+    <audio id="sonido-desbloqueo" src="sound/sonidoDesbloqueo.mp3"></audio>
+
+    <audio id="sonido-auto" src="sound/sonidoActivacion.mp3" preload="auto"></audio>
+
+
+
+</body>
+
+</html>

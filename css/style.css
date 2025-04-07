@@ -1,0 +1,479 @@
+/* Fondo general */
+body {
+    margin: 0;
+    font-family: 'M PLUS 1p', sans-serif;
+    background: #1e1818;
+    color: #d1d1d1;
+}
+
+body.sacudida {
+    animation: body-shake 0.5s ease-in-out 3;
+}
+
+.boss-fondo {
+    background: radial-gradient(circle at center, #1a0000 0%, #000 100%);
+    transition: background 1s ease;
+}
+
+@keyframes body-shake {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(-5px, 3px);
+    }
+
+    50% {
+        transform: translate(5px, -3px);
+    }
+
+    75% {
+        transform: translate(-4px, 2px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+#titulo {
+    font-family: "Matemasie", sans-serif;
+    font-size: 25px;
+    color: #fff;
+    font-weight: 400;
+    text-shadow: 0 0 10px #d12c2c;
+}
+
+#contador {
+    font-size: 3rem;
+    color: #d12c2c;
+    text-shadow: 0 0 10px #d12c2c;
+}
+
+button {
+    background-color: #d12c2c;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px #c8323c60;
+    margin: 0.5em;
+    padding: 0.5em 1em;
+    font-size: 1em;
+    z-index: 9999999;
+}
+
+button:hover {
+    background-color: #e54242;
+    box-shadow: 0 0 15px #ff4f4f;
+}
+
+#evento-zorua.oculto {
+    display: none;
+}
+
+@keyframes desaparecer {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+.oculto {
+    display: none;
+}
+
+#evento-zorua {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    right: 0;
+    width: 400px;
+    height: 400px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    max-width: 90vw;
+    max-height: 50vh;
+    overflow: hidden;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    border-radius: 20px;
+    z-index: 1000;
+}
+
+#evento-zorua.boss-position {
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: column;
+}
+
+
+#evento-zorua img {
+    max-height: 200px;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    max-height: clamp(120px, 20vh, 200px);
+    transform: scaleX(-1);
+}
+
+
+#evento-zorua button {
+    margin: 0.5em;
+    padding: 0.5em 1em;
+    font-size: 1em;
+}
+
+#mensaje {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#mensaje button {
+    margin: 0.3em;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes flotar {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+#fondo-zorua {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95));
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#fondo-zorua.visible {
+    opacity: 1;
+}
+
+#zorua-img {
+    max-width: 200px;
+    margin-bottom: 10px;
+}
+
+#zorua-img.enfadado {
+    filter: brightness(0.6) saturate(2);
+    transform: scaleX(-1);
+}
+
+.temblor {
+    animation: sacudida 0.4s ease-in-out 10;
+}
+
+@keyframes sacudida {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(-5px, 2px);
+    }
+
+    50% {
+        transform: translate(5px, -2px);
+    }
+
+    75% {
+        transform: translate(-3px, 3px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+#humo {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    pointer-events: none;
+    z-index: 20;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.humo-activo {
+    opacity: 1;
+    animation: humo-flotar 2s ease-out forwards;
+}
+
+@keyframes humo-flotar {
+    0% {
+        transform: translate(-50%, 0) scale(0.5);
+        opacity: 0.7;
+        filter: blur(1px);
+    }
+
+    50% {
+        transform: translate(-50%, -20px) scale(1);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translate(-50%, -40px) scale(1.2);
+        opacity: 0;
+        filter: blur(3px);
+    }
+}
+
+#humo::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(200, 200, 200, 0.6), transparent 70%);
+    border-radius: 50%;
+}
+
+#zorua-img.boss-mode {
+    max-width: 250px;
+    animation: flotar 2s ease-in-out infinite;
+}
+
+#barra-boss-container {
+    margin-top: 10px;
+    background: #222;
+    border: 1px solid red;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    height: 20px;
+}
+
+#barra-boss {
+    height: 100%;
+    background: crimson;
+    width: 0%;
+    transition: width 0.2s ease;
+}
+
+#purificacion {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 80%);
+    z-index: 9999;
+    opacity: 1;
+    pointer-events: none;
+    transition: opacity 2s ease;
+}
+
+#purificacion.fadeout {
+    opacity: 0;
+}
+
+.mensaje-final {
+    font-family: 'UnifrakturCook', cursive;
+    font-size: 1.5em;
+    color: #fff5f5;
+    text-shadow: 2px 2px 8px crimson;
+    animation: aparecerMensajeFinal 1s ease forwards;
+}
+
+@keyframes aparecerMensajeFinal {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#overlay-boss {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.95) 100%);
+    opacity: 0;
+    z-index: 900;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#overlay-boss.activo {
+    opacity: 1;
+}
+
+#evento-zorua.ocultando {
+    animation: desaparecerSuave 0.5s forwards;
+}
+
+@keyframes desaparecerSuave {
+    0% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.9);
+    }
+}
+
+#flash-destello {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.flash-final {
+    animation: iluminacionFinal 4s ease-out forwards;
+}
+
+@keyframes iluminacionFinal {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    85% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes desintegrarLuz {
+    0% {
+        opacity: 1;
+        filter: brightness(1);
+    }
+
+    100% {
+        opacity: 0;
+        filter: brightness(5);
+    }
+}
+
+.desaparecer-en-luz {
+    animation: desintegrarLuz 4s ease-out forwards;
+    transform-origin: center center;
+}
+
+@keyframes desvanecerSuave {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.fundido-suave {
+    animation: desvanecerSuave 2.5s ease-out forwards;
+}
+
+@keyframes burla-movimiento {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(-5px, -2px);
+    }
+
+    50% {
+        transform: translate(5px, 2px);
+    }
+
+    75% {
+        transform: translate(-3px, 2px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+.burla-animacion {
+    animation: reirBoss 2s ease-in-out;
+}
+
+@keyframes reirBoss {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    25% {
+        transform: rotate(2deg) scale(1.05);
+    }
+
+    50% {
+        transform: rotate(-2deg) scale(1.1);
+    }
+
+    75% {
+        transform: rotate(2deg) scale(1.05);
+    }
+
+    100% {
+        transform: rotate(0deg) scale(1);
+    }
+}

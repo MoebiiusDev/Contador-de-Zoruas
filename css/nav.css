@@ -1,0 +1,328 @@
+@import url("https://fonts.googleapis.com/css2?family=Matemasie&display=swap");
+
+
+.nav {
+    background: #1e1818;
+    padding: 0 30px 0 30px;
+    border-bottom: 1px solid #666565;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+
+
+}
+
+.navegador {
+    display: flex;
+    align-items: center;
+}
+
+
+.loge {
+    width: 50px;
+    height: 50px;
+    filter: drop-shadow(0 0 2px #d1d1d1);
+
+}
+
+.moebiius {
+    font-family: "Matemasie", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #d1d1d1;
+}
+
+
+.iconnex {
+    width: 50px;
+    filter: drop-shadow(0 0 10px #d1d1d1);
+    animation: rotate-vert-center 5s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite both;
+}
+
+@keyframes rotate-vert-center {
+    0% {
+        transform: rotateY(0);
+    }
+
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    gap: 10px;
+}
+
+
+
+
+.barraDeAyuda {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: left;
+    bottom: 10px;
+    left: 10px;
+    gap: 10px;
+}
+
+.barraDeAyuda img {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #666565;
+    padding: 10px;
+}
+
+
+/* Botones de ayuda */
+
+.bloqueado {
+    opacity: 0.4;
+    filter: grayscale(100%);
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.boton-usado {
+    opacity: 0.5;
+    pointer-events: none;
+    filter: grayscale(100%);
+    transform: scale(0.95);
+    transition: all 0.3s ease;
+}
+
+.mensaje-animado {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 16px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1000;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.mostrar {
+    animation-name: aparecer;
+}
+
+.desaparecer {
+    animation-name: desaparecer;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes desaparecer {
+    from {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+}
+
+.oculto {
+    display: none;
+}
+
+/* Estilos personalizados por personaje */
+.ayuda-astley {
+    background: linear-gradient(135deg, #ffe0e9, #dbeeff);
+    color: #4b0082;
+    box-shadow: 0 0 15px #ff69b4;
+}
+
+.ayuda-barretta {
+    background: linear-gradient(135deg, #ffd5b4, #ffe7d6);
+    color: #4a2600;
+    box-shadow: 0 0 10px #ff8c00;
+}
+
+.ayuda-muerte {
+    background: linear-gradient(135deg, #222, #444);
+    color: crimson;
+    box-shadow: 0 0 12px crimson;
+}
+
+.ayuda-es {
+    background: linear-gradient(135deg, #d3ffd3, #f0fff0);
+    color: darkgreen;
+    box-shadow: 0 0 12px #9f9;
+}
+
+
+
+/* Escena del boss | Golpes */
+
+.golpe {
+    animation: sacudida 0.2s ease;
+}
+
+@keyframes sacudida {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    20% {
+        transform: translate(-5px, 0);
+    }
+
+    40% {
+        transform: translate(5px, 0);
+    }
+
+    60% {
+        transform: translate(-5px, 0);
+    }
+
+    80% {
+        transform: translate(5px, 0);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes sacudida-rapida {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(-3px, 0);
+    }
+
+    50% {
+        transform: translate(3px, 0);
+    }
+
+    75% {
+        transform: translate(-2px, 0);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes sacudida-dramática {
+    0% {
+        transform: translate(0, 0);
+        filter: drop-shadow(0 0 0 crimson);
+    }
+
+    25% {
+        transform: translate(-3px, 0);
+        filter: drop-shadow(0 0 6px crimson);
+    }
+
+    50% {
+        transform: translate(3px, 0);
+        filter: drop-shadow(0 0 8px crimson);
+    }
+
+    75% {
+        transform: translate(-2px, 0);
+        filter: drop-shadow(0 0 6px crimson);
+    }
+
+    100% {
+        transform: translate(0, 0);
+        filter: drop-shadow(0 0 0 crimson);
+    }
+}
+
+#zorua-img.golpe {
+    animation: sacudida-dramática 0.25s ease;
+}
+
+
+/* Boton activo automatico | (l_es) */
+
+.les-activo {
+    animation: brilloLES 1.2s infinite alternate ease-in-out;
+    filter: brightness(1.5) drop-shadow(0 0 10px crimson);
+    transform: scale(1.05);
+}
+
+@keyframes brilloLES {
+    0% {
+        filter: brightness(1.2) drop-shadow(0 0 5px crimson);
+    }
+
+    100% {
+        filter: brightness(2) drop-shadow(0 0 15px red);
+    }
+}
+
+/* Boton  Barreta */
+
+.barraDeAyuda img.boton-usado:nth-child(2) {
+    filter: brightness(1.2) saturate(1.4);
+    transform: scale(1.05);
+    animation: disparoBarretta 0.3s ease-in-out;
+    box-shadow: 0 0 8px red;
+}
+
+@keyframes disparoBarretta {
+    0% {
+        transform: scale(1.1) rotate(-2deg);
+    }
+
+    50% {
+        transform: scale(1.05) rotate(2deg);
+    }
+
+    100% {
+        transform: scale(1.1) rotate(0deg);
+    }
+}
+
+/* Boton Astley */
+
+@keyframes astley-pop {
+    0% {
+        transform: scale(1) rotate(0deg);
+        filter: brightness(1);
+    }
+
+    50% {
+        transform: scale(1.15) rotate(10deg);
+        filter: brightness(1.5);
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+        filter: brightness(1);
+    }
+}
+
+.astley-animar {
+    animation: astley-pop 0.4s ease;
+}

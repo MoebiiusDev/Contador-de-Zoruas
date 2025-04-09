@@ -14,6 +14,7 @@
 <body>
 
     <!-- <img src="img/finalboss.png" class="zoom-abalanza"> -->
+    <div id="boss-background"></div>
 
     <div class="nav">
         <nav class="navegador">
@@ -33,10 +34,10 @@
     <!-- Barra de ayuda -->
 
     <div class="barraDeAyuda">
-        <img src="img/L_Astley.png" alt="">
-        <img src="img/L_Barretta.png" alt="">
-        <img src="img/L_EntidadDeMuerte.png" alt="">
-        <img src="img/L_ES.png" alt="">
+        <img src="img/LeyliIcon.png" alt="">
+        <img src="img/VladiIcon.png" alt="">
+        <img src="img/ZoroIcon.png" alt="">
+        <img src="img/LeyliIcon.png" alt="">
     </div>
     <div id="mensaje-ayuda" class="mensaje-animado oculto"></div>
 
@@ -44,8 +45,12 @@
 
     <!-- Evento con Zorua -->
     <div id="evento-zorua" class="oculto">
-        <div id="mensaje">¿Quieres ayuda de un Zorua?</div>
         <img id="zorua-img" src="img/zorua.png" alt="Zorua">
+
+        <div id="mensaje">¿Quieres ayuda de un Zorua?</div>
+
+        <div id="botones-boss" class="botones-lado"></div>
+
         <div id="barra-boss-container" class="oculto">
             <div id="barra-boss"></div>
         </div>
@@ -56,9 +61,15 @@
 
 
 
+
     <div id="humo"></div>
     <div id="overlay-boss"></div>
     <div id="flash-destello"></div>
+    <div id="fondo-transicion-suave"></div>
+    
+
+    <div id="particulas-victoria"></div>
+
 
 
 
@@ -73,7 +84,7 @@
     <audio id="sonido-flash" src="sound/destello.mp3"></audio>
     <audio id="sonido-burla" src="sound/burla.mp3" preload="auto"></audio>
     <audio id="sonido-burla-boss" src="sound/burla.mp3" preload="auto"></audio>
-    <audio id="sonido-golpe" src="sound/sarten.mp3" preload="auto"></audio>
+    <!-- <audio id="sonido-golpe" src="sound/sarten.mp3" preload="auto"></audio> -->
     <audio id="sonido-desbloqueo" src="sound/sonidoDesbloqueo.mp3"></audio>
 
     <audio id="sonido-auto" src="sound/sonidoActivacion.mp3" preload="auto"></audio>

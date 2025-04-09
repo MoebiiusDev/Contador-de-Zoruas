@@ -2,8 +2,9 @@
 body {
     margin: 0;
     font-family: 'M PLUS 1p', sans-serif;
-    background: #1e1818;
+    background: #160707;
     color: #d1d1d1;
+    overflow-x: hidden;
 }
 
 body.sacudida {
@@ -13,6 +14,8 @@ body.sacudida {
 .boss-fondo {
     background: radial-gradient(circle at center, #1a0000 0%, #000 100%);
     transition: background 1s ease;
+    z-index: 100;
+    position: relative;
 }
 
 @keyframes body-shake {
@@ -37,6 +40,58 @@ body.sacudida {
     }
 }
 
+#boss-background {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle, #551111 0%, #000 100%);
+    z-index: 100;
+    /* debajo del boss, encima del fondo base */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease;
+}
+
+#boss-background.activo {
+    opacity: 1;
+    background: radial-gradient(circle, #551111 0%, #000000 100%);
+}
+
+.activo {
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+#zorua-img {
+    max-width: 200px;
+    margin-bottom: 10px;
+    opacity: 1;
+    
+}
+
+#zorua-img.activo{
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+#mensaje {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    opacity: 1;
+}
+
+#mensaje.activo{
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+
 #titulo {
     font-family: "Matemasie", sans-serif;
     font-size: 25px;
@@ -49,6 +104,7 @@ body.sacudida {
     font-size: 3rem;
     color: #d12c2c;
     text-shadow: 0 0 10px #d12c2c;
+    margin-bottom: 3rem;
 }
 
 button {
@@ -64,7 +120,7 @@ button {
     margin: 0.5em;
     padding: 0.5em 1em;
     font-size: 1em;
-    z-index: 9999999;
+    /* z-index: 9999999; */
 }
 
 button:hover {
@@ -92,40 +148,71 @@ button:hover {
     display: none;
 }
 
+/* Contenedor general del evento Zorua */
 #evento-zorua {
     position: absolute;
     display: flex;
-    bottom: 0;
-    right: 0;
-    width: 400px;
-    height: 400px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 400px;
+    height: auto;
     padding: 1em;
     max-width: 90vw;
-    max-height: 50vh;
     overflow: hidden;
-    /* background-color: rgba(0, 0, 0, 0.5); */
-    border-radius: 20px;
     z-index: 1000;
+    pointer-events: auto;
 }
 
+/* Cuando está en modo jefe */
 #evento-zorua.boss-position {
-    top: 15%;
+    top: 7%;
     left: 50%;
     transform: translateX(-50%);
-    flex-direction: column;
 }
+
+/* Imagen del jefe */
+#evento-zorua img {
+    max-height: clamp(120px, 20vh, 200px);
+    transform: scaleX(-1);
+    transition: transform 1s ease, opacity 1s ease, filter 1s ease;
+}
+
+
+/* Escalado especial para la imagen del jefe */
+.zorua-escalado {
+    transform: scale(1.2) scaleX(-1);
+}
+
+/* Botones */
+#botones-boss {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    position: relative;
+    z-index: 1001;
+
+}
+
+#botones-boss button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    border: none;
+    transition: transform 0.2s;
+}
+
+#botones-boss button:hover {
+    transform: scale(1.05);
+}
+
 
 
 #evento-zorua img {
-    max-height: 200px;
-    max-width: 100%;
-    height: auto;
-    width: auto;
     max-height: clamp(120px, 20vh, 200px);
     transform: scaleX(-1);
+    transition: transform 0.3s ease;
 }
 
 
@@ -135,17 +222,10 @@ button:hover {
     font-size: 1em;
 }
 
-#mensaje {
-    margin-top: 10px;
-    font-size: 1.1rem;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 10px;
-}
 
 #mensaje button {
     margin: 0.3em;
+    width: 100%;
 }
 
 @keyframes aparecer {
@@ -188,10 +268,7 @@ button:hover {
     opacity: 1;
 }
 
-#zorua-img {
-    max-width: 200px;
-    margin-bottom: 10px;
-}
+
 
 #zorua-img.enfadado {
     filter: brightness(0.6) saturate(2);
@@ -282,6 +359,14 @@ button:hover {
     overflow: hidden;
     width: 100%;
     height: 20px;
+    opacity: 1;
+    transition: opacity 1s ease;
+
+}
+
+#barra-boss-container.barra-fade-out{
+    opacity: 0;
+    transition: opacity 1s ease;
 }
 
 #barra-boss {
@@ -344,6 +429,12 @@ button:hover {
 #overlay-boss.activo {
     opacity: 1;
 }
+
+.ocultando {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
 
 #evento-zorua.ocultando {
     animation: desaparecerSuave 0.5s forwards;
@@ -416,7 +507,7 @@ button:hover {
     transform-origin: center center;
 }
 
-@keyframes desvanecerSuave {
+/* @keyframes desvanecerSuave {
     0% {
         opacity: 1;
     }
@@ -428,7 +519,7 @@ button:hover {
 
 .fundido-suave {
     animation: desvanecerSuave 2.5s ease-out forwards;
-}
+} */
 
 @keyframes burla-movimiento {
     0% {

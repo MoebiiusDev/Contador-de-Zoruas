@@ -1,0 +1,80 @@
+#evento-chef {
+    position: absolute;
+    width: 500px;
+    top: 72%;
+    left: 65%;
+    z-index: 9999;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    animation: entradaSuaveEventoChef 0.5s ease;
+}
+
+@keyframes entradaSuaveEventoChef {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+#evento-chef img {
+    width: 150px;
+    margin-bottom: 20px;
+    animation: reboteChefZorua 0.6s ease infinite;
+}
+
+@keyframes reboteChefZorua {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes reboteYMovimiento {
+    0% {
+        transform: translateY(0) scaleX(1);
+        /* Mirando hacia la derecha */
+    }
+
+    25% {
+        transform: translateY(-10px) scaleX(1);
+        /* Salto y sigue mirando a la derecha */
+    }
+
+    35% {
+        transform: translateY(-10px) scaleX(1);
+        /* Comienza a voltear hacia la izquierda */
+    }
+
+    50% {
+        transform: translateY(-15px) scaleX(1);
+        /* Más alto y vuelve a mirar hacia la derecha */
+    }
+
+    65% {
+        transform: translateY(-10px) scaleX(-1);
+        /* Salto y mira hacia la izquierda */
+    }
+
+    75% {
+        transform: translateY(-10px) scaleX(-1);
+        /* Vuelve a la derecha */
+    }
+
+    100% {
+        transform: translateY(0) scaleX(1);
+        /* Regresa a la posición original mirando hacia la derecha */
+    }
+}

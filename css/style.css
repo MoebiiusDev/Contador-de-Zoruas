@@ -61,19 +61,19 @@ body.sacudida {
     transition: opacity 1s ease;
 }
 
-#zorua-img {
+#zorua-boss-img {
     max-width: 200px;
     margin-bottom: 10px;
     opacity: 1;
     
 }
 
-#zorua-img.activo{
+#zorua-boss-img.activo{
     opacity: 0;
     transition: opacity 1s ease;
 }
 
-#mensaje {
+#mensaje-boss {
     margin-top: 10px;
     font-size: 1.1rem;
     align-items: center;
@@ -86,7 +86,7 @@ body.sacudida {
     opacity: 1;
 }
 
-#mensaje.activo{
+#mensaje-boss.activo{
     opacity: 0;
     transition: opacity 1s ease;
 }
@@ -128,7 +128,7 @@ button:hover {
     box-shadow: 0 0 15px #ff4f4f;
 }
 
-#evento-zorua.oculto {
+#evento-zorua-boss.oculto {
     display: none;
 }
 
@@ -149,7 +149,7 @@ button:hover {
 }
 
 /* Contenedor general del evento Zorua */
-#evento-zorua {
+#evento-zorua-boss {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -165,14 +165,14 @@ button:hover {
 }
 
 /* Cuando está en modo jefe */
-#evento-zorua.boss-position {
+#evento-zorua-boss.boss-position {
     top: 7%;
     left: 50%;
     transform: translateX(-50%);
 }
 
 /* Imagen del jefe */
-#evento-zorua img {
+#evento-zorua-boss img {
     max-height: clamp(120px, 20vh, 200px);
     transform: scaleX(-1);
     transition: transform 1s ease, opacity 1s ease, filter 1s ease;
@@ -209,21 +209,21 @@ button:hover {
 
 
 
-#evento-zorua img {
+#evento-zorua-boss img {
     max-height: clamp(120px, 20vh, 200px);
     transform: scaleX(-1);
     transition: transform 0.3s ease;
 }
 
 
-#evento-zorua button {
+#evento-zorua-boss button {
     margin: 0.5em;
     padding: 0.5em 1em;
     font-size: 1em;
 }
 
 
-#mensaje button {
+#mensaje-boss button {
     margin: 0.3em;
     width: 100%;
 }
@@ -270,7 +270,7 @@ button:hover {
 
 
 
-#zorua-img.enfadado {
+#zorua-boss-img.enfadado {
     filter: brightness(0.6) saturate(2);
     transform: scaleX(-1);
 }
@@ -346,7 +346,7 @@ button:hover {
     border-radius: 50%;
 }
 
-#zorua-img.boss-mode {
+#zorua-boss-img.boss-mode {
     max-width: 250px;
     animation: flotar 2s ease-in-out infinite;
 }
@@ -436,7 +436,7 @@ button:hover {
 }
 
 
-#evento-zorua.ocultando {
+#evento-zorua-boss.ocultando {
     animation: desaparecerSuave 0.5s forwards;
 }
 

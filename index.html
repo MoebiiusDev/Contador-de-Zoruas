@@ -7,6 +7,8 @@
 
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" href="/css/eventoChef.css">
+
     <script src="/js/code.js" defer></script>
     <title>Contador de Zoruas</title>
 </head>
@@ -43,18 +45,23 @@
 
 
 
-    <!-- Evento con Zorua -->
-    <div id="evento-zorua" class="oculto">
-        <img id="zorua-img" src="img/zorua.png" alt="Zorua">
-
-        <div id="mensaje">¿Quieres ayuda de un Zorua?</div>
-
+    <!-- Evento con Zorua Boss -->
+    <div id="evento-zorua-boss" class="oculto">
+        <img id="zorua-boss-img" src="img/zorua.png" alt="Zorua Boss">
+        <div id="mensaje-boss"></div>
         <div id="botones-boss" class="botones-lado"></div>
-
         <div id="barra-boss-container" class="oculto">
             <div id="barra-boss"></div>
         </div>
     </div>
+
+
+
+    <div id="evento-chef" class="oculto">
+        <img id="zorua-chef-img" src="img/zorua.png" alt="Zorua Chef">
+        <div id="mensaje-chef"></div>
+    </div>
+
 
 
 
@@ -66,7 +73,7 @@
     <div id="overlay-boss"></div>
     <div id="flash-destello"></div>
     <div id="fondo-transicion-suave"></div>
-    
+
 
     <div id="particulas-victoria"></div>
 

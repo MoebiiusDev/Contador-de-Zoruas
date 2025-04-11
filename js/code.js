@@ -19,7 +19,7 @@ let contador = 0;
 let autoSumando = false;
 let eventoActivo = false;
 let eventoZoruaMostrado = false;
-let incremento = 1;
+let incremento = 500;
 let zoruaAyudando = false;
 let zoruaFinalBossAparecio = false;
 let ayudaUsada = false;
@@ -30,6 +30,8 @@ let entidadDesbloqueada = false;
 let lesDesbloqueado = false;
 
 let timeoutMostrar, timeoutOcultar;
+let batallaFinalActiva = false;
+
 
 let modoDebugBoss = true;
 
@@ -71,6 +73,10 @@ boton.addEventListener('click', () => {
         mostrarZoruaFinalBoss();
     }
 
+    if (contador >= 2000 && !batallaFinalActiva) {
+        iniciarBatallaUndertaleZorua();
+    }
+
     // DESBLOQUEO DE BARRETTA
     if (contador >= 100 && !barrettaDesbloqueada) {
         barrettaDesbloqueada = true;
@@ -109,6 +115,8 @@ boton.addEventListener('click', () => {
 });
 
 function mostrarMensajeAyuda(texto, claseExtra = '') {
+    // if (modoDebugBoss) return;
+
     const mensajeAyuda = document.getElementById('mensaje-ayuda');
     // Reiniciar animaciones cancelando las anteriores si siguen activas
     clearTimeout(timeoutMostrar);
@@ -224,9 +232,45 @@ imagenes[3].addEventListener('click', () => {
 
 
 
+
+function iniciarBatallaUndertaleZorua() {
+    // if (modoDebugBoss) return;
+
+    batallaFinalActiva = true;
+    document.body.style.overflow = "hidden";
+    // Reproducir sonido dramático
+    const sonido = document.getElementById("sonidoTransicion");
+    sonido.play();
+
+    // Fundido
+    const fondo = document.getElementById("fondoOscuro");
+    fondo.style.display = "block";
+    setTimeout(() => {
+        fondo.style.opacity = "1";
+    }, 10);
+    setTimeout(() => {
+        const JefeUZ = document.getElementById("JefeUZ");
+        JefeUZ.play();
+
+
+        preBoss2.style.display = "none";
+
+        document.getElementById("zonaBatalla").style.display = "flex";
+        document.getElementById("otrasCosas").style.display = "none";
+        document.body.style.overflow = "hidden";
+        iniciarCanvasUndertale();
+        fondo.style.display = "none";
+    }, 5000);
+}
+
+
+
+
+
+
 //* Evento Cheff Zorua
 function mostrarEventoChef() {
-    // if (modoDebugBoss) return;
+    if (modoDebugBoss) return;
     eventoActivo = true;
     eventoZoruaMostrado = true;
 
@@ -237,9 +281,11 @@ function mostrarEventoChef() {
     mensajeChef.innerHTML = '¿Quieres ayuda de un Zorua Chef?<br>';
 
     const btnSi = document.createElement('button');
+    btnSi.className = 'btnChef';
     btnSi.textContent = 'Sí';
 
     const btnNo = document.createElement('button');
+    btnNo.className = 'btnChef';
     btnNo.textContent = 'No';
 
     mensajeChef.appendChild(btnSi);
@@ -293,12 +339,6 @@ function mostrarEventoChef() {
         }, 3000);
     });
 }
-
-
-
-
-
-
 
 //! Funciones Boss!!
 function mostrarZoruaFinalBoss() {
@@ -646,21 +686,7 @@ function reproducirEfectoBoss() {
     sonido.volume = 0.9;
     sonido.play();
 }
-function mostrarBotonesBoss() {
-    const botonesBoss = document.getElementById('botones-boss');
-    botonesBoss.innerHTML = '';
-    
-    const btnReto = document.createElement('button');
-    btnReto.textContent = 'Aceptar el reto';
-    
-    const btnHuir = document.createElement('button');
-    btnHuir.textContent = 'Huir';
-    
-    botonesBoss.appendChild(btnReto);
-    botonesBoss.appendChild(btnHuir);
-    
-    // Aquí puedes volver a agregar los listeners como en el código original...
-}
+
 function generarParticulasVictoria() {
     const contenedor = document.getElementById('particulas-victoria');
     contenedor.innerHTML = ''; // Limpiar previas
@@ -716,70 +742,3 @@ document.getElementById('barra-boss-container').classList.add('oculto');
 //! setTimeout(() => {
     //!     window.close();
     //! }, 5000); // luego de la burla
-    // function mostrarEventoZorua() {
-    //     // if (modoDebugBoss) return;
-    
-    //     eventoActivo = true;
-    //     eventoZoruaMostrado = true;
-    //     const btnSi = document.createElement('button');
-    //     btnSi.textContent = 'Sí';
-    //     const btnNo = document.createElement('button');
-    //     btnNo.textContent = 'No';
-    //     mensaje.innerHTML = '¿Quieres ayuda de un Zorua?<br>';
-    //     eventoZorua.classList.remove('oculto');
-    //     zoruaImg.classList.remove('enfadado');
-    
-    
-    //     mensaje.appendChild(btnSi);
-    //     mensaje.appendChild(btnNo);
-    
-    //     btnSi.addEventListener('click', () => {
-    //         mensaje.textContent = 'Zorua está ayudando...';
-    //         sonidoAyuda.play();
-    //         zoruaAyudando = true;
-    //         zoruaImg.src = 'img/zorua.png';
-    
-    //         let veces = 0;
-    //         const intervalo = setInterval(() => {
-    //             if (veces < 10) {
-    //                 contador += 5;
-    //                 actualizarContador();
-    //                 veces++;
-    //             } else {
-    //                 clearInterval(intervalo);
-    //                 mensaje.textContent = 'Zorua terminó de ayudar.';
-    
-    //                 zoruaAyudando = false;
-    //                 setTimeout(() => {
-    //                     if (!zoruaFinalBossAparecio) {
-    //                         document.getElementById('barra-boss-container').classList.add('oculto');
-    //                         eventoZorua.classList.add('oculto');
-    //                         mensaje.innerHTML = '';
-    //                     }
-    //                     eventoActivo = false;
-    //                 }, 2000);
-    //             }
-    //         }, 1000);
-    //     });
-    
-    //     btnNo.addEventListener('click', () => {
-    //         mensaje.textContent = 'Zorua se enoja y se lleva todos tus puntos...';
-    //         sonidoNo.play();
-    //         zoruaImg.src = 'img/ZoruaEnojado.gif';
-    //         zoruaImg.classList.add('temblor');
-    //         humo.classList.add('humo-activo');
-    
-    //         contador = 0;
-    //         actualizarContador();
-    
-    //         setTimeout(() => {
-    //             // document.getElementById('barra-boss-container').classList.add('oculto');
-    //             eventoZorua.classList.add('oculto');
-    //             zoruaImg.src = 'img/zorua.png';
-    //             mensaje.innerHTML = '';
-    //             zoruaImg.classList.remove('temblor');
-    //             humo.classList.remove('humo-activo');
-    //             eventoActivo = false;
-    //         }, 3000);
-    //     });
-    // }

@@ -107,7 +107,7 @@ body.sacudida {
     margin-bottom: 3rem;
 }
 
-button {
+/* button {
     background-color: #d12c2c;
     border: none;
     color: white;
@@ -120,13 +120,57 @@ button {
     margin: 0.5em;
     padding: 0.5em 1em;
     font-size: 1em;
-    /* z-index: 9999999; */
 }
 
 button:hover {
     background-color: #e54242;
     box-shadow: 0 0 15px #ff4f4f;
+} */
+
+#aumentar{
+    background-color: #d12c2c;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px #c8323c60;
+    margin: 0.5em;
+    padding: 0.5em 1em;
+    font-size: 1em;
 }
+
+#aumentar:hover{
+    background-color: #e54242;
+    box-shadow: 0 0 15px #ff4f4f;
+}
+
+.btnChef{
+    background-color: #d12c2c;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px #c8323c60;
+    margin: 0.5em;
+    padding: 0.5em 1em;
+    font-size: 1em;
+}
+
+.btnChef:hover{
+    background-color: #e54242;
+    box-shadow: 0 0 15px #ff4f4f;
+}
+
+
+
+
+
 
 #evento-zorua-boss.oculto {
     display: none;

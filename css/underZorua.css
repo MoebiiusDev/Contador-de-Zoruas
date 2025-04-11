@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+@font-face {
+    font-family: 'font';
+    /* Nombre que usarás en tu CSS */
+    src: url('/fonts/font.ttf') format('truetype');
+    /* Asegúrate de que la ruta sea correcta */
+}
+
+@font-face {
+    font-family: 'save';
+    /* Nombre que usarás en tu CSS */
+    src: url('/fonts/save.ttf') format('truetype');
+    /* Asegúrate de que la ruta sea correcta */
+}
+
+#zonaBatalla {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    z-index: 9999;
+    /* Asegura que esté por encima de todo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Courier New', monospace;
+}
+
+
+
+#battleCanvas {
+    border: 4px solid white;
+    background-color: #111;
+    margin-top: 30px;
+}
+
+#zonaBatalla {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#fondoOscuro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: 0;
+    z-index: 9998;
+    transition: opacity 7s ease;
+}
+
+#preBoss {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    color: white;
+    z-index: 9999;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Courier New', monospace;
+}
+
+#preBoss2 {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    color: white;
+    z-index: 9999;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Courier New', monospace;
+}
+
+#jefeZorua {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    width: 575px;
+    height: 140px;
+    border: 5px solid #fff;
+    margin-top: -70px;
+    background-color: #000;
+    z-index: 10;
+    color: #fff;
+    font-family: "font", sans-serif;
+    font-size: 17pt;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+#imgZorua {
+    width: 150px;
+    /* Ajusta el tamaño de Zorua */
+    position: absolute;
+    /* Permitir el movimiento */
+    top: -160px;
+    /* Altura fija */
+    left: 50%;
+    /* Centrado horizontal */
+    transform: translateX(-50%);
+    /* Para centrarlo bien */
+}
+
+#vidaJugador {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.2em;
+    /* Tamaño de fuente más grande */
+    color: white;
+    /* Color de texto */
+}
+
+
+
+#acciones {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    /* margin-top: 20px; */
+    width: 575px;
+    height: 70px;
+}
+
+.btnU {
+    background-color: #000000;
+    color: #ff872f;
+    border: none;
+    border-radius: 0;
+    padding: 2px;
+    cursor: pointer;
+    /* transition: background-color 0.3s, transform 0.3s; */
+    font-family: 'save', sans-serif;
+    font-size: 40px;
+}
+
+/* .btnU:hover {
+    border: 2px solid #fffc2f;
+    color: #fffc2f;
+} */
+
+#mensajeZorua {
+    padding: 0;
+    text-align: left;
+}
+
+.containerAtaque {
+    width: 200px;
+    border: 2px solid #ff872f;
+    display: flex;
+    align-items: center;
+    /* height: 100px; */
+    padding: 5px;
+}
+
+.containerAtaque:hover{
+    border: 2px solid #fffc2f;
+    color: #fffc2f;
+}
+
+.containerAtaque:hover .btnU{
+    /* border: 2px solid #fffc2f; */
+    color: #fffc2f;
+}
+
+
+
+img.imgAtaque {
+    height: 48px;
+    width: 35px;
+}

@@ -8,16 +8,55 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/nav.css">
     <link rel="stylesheet" href="/css/eventoChef.css">
+    <link rel="stylesheet" href="/css/underZorua.css">
+
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet"> -->
+
+
 
     <script src="/js/code.js" defer></script>
+    <script src="/js/UnderZorua.js" defer></script>
+
     <title>Contador de Zoruas</title>
 </head>
 
 <body>
+    <!-- Batalla final real -->
+
+    <div id="preBoss">
+        <img src="img/PreBoss.png" alt="">
+    </div>
+
+    <div id="preBoss2">
+        <img src="img/BossFinal.png" alt="">
+    </div>
+
+
+
+    <div id="fondoOscuro" style="display: none;"></div>
+    <div id="zonaBatalla" style="display: none;">
+        <div id="jefeZorua">
+            <img id="imgZorua" src="img/finalboss.png" alt="Zorua" />
+            <p id="mensajeZorua">* MEGAZORUA esta preparándose para pelear</p>
+        </div>
+        <div id="vidaJugador">
+            <p>HP: <span id="hpJugador">100</span></p>
+        </div>
+        <div id="acciones">
+            <div class="containerAtaque">
+                <img  class="imgAtaque" src="img/logo.png" alt="prueba">
+                <button class="btnU" id="btnAtacar">FIGHT</button>
+            </div>
+            <button class="btnU" id="btnActuar">ACT</button>
+            <button class="btnU" id="btnObjeto">ITEM</button>
+            <button class="btnU" id="btnPerdonar">HOLA</button>
+        </div>
+    </div>
+
+
 
     <!-- <img src="img/finalboss.png" class="zoom-abalanza"> -->
     <div id="boss-background"></div>
-
     <div class="nav">
         <nav class="navegador">
             <img src="img/moebiiuslogo.png" alt="" class="iconnex">
@@ -57,6 +96,7 @@
 
 
 
+    <!-- Evento Normalito -->
     <div id="evento-chef" class="oculto">
         <img id="zorua-chef-img" src="img/zorua.png" alt="Zorua Chef">
         <div id="mensaje-chef"></div>
@@ -95,6 +135,14 @@
     <audio id="sonido-desbloqueo" src="sound/sonidoDesbloqueo.mp3"></audio>
 
     <audio id="sonido-auto" src="sound/sonidoActivacion.mp3" preload="auto"></audio>
+    <audio id="sonidoTransicion" src="sound/efectoDramaticoBoss.mp3"></audio>
+    <audio id="sonidoDuck" src="sound/duck.mp3"></audio>
+    <audio id="sonidoPreBoss2" src="sound/grito de deidad.mp3"></audio>
+    <audio id="JefeUZ" src="sound/JefeUZ.mp3"></audio>
+
+
+
+
 
 
 

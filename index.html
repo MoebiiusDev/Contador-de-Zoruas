@@ -24,33 +24,92 @@
     <!-- Batalla final real -->
 
     <div id="preBoss">
-        <img src="img/PreBoss.png" alt="">
+        <img src="/img/PreBoss.png" alt="">
     </div>
 
     <div id="preBoss2">
-        <img src="img/BossFinal.png" alt="">
+        <img src="/img/BossFinal.png" alt="">
     </div>
 
 
 
     <div id="fondoOscuro" style="display: none;"></div>
     <div id="zonaBatalla" style="display: none;">
+    <!-- <div id="fondoOscuro"></div>
+    <div id="zonaBatalla"> -->
+
+
         <div id="jefeZorua">
             <img id="imgZorua" src="img/finalboss.png" alt="Zorua" />
             <p id="mensajeZorua">* MEGAZORUA esta preparándose para pelear</p>
         </div>
-        <div id="vidaJugador">
-            <p>HP: <span id="hpJugador">100</span></p>
+
+
+        <div id="infoJugador">
+            <span class="lv">LV <span class="valor">1</span></span>
+            <span class="hpLabel">HP</span>
+            <div class="barraHp"></div>
+            <span class="vidaTotal"><span id="hpJugador">20</span> / 20</span>
         </div>
+
+
+
         <div id="acciones">
-            <div class="containerAtaque">
-                <img  class="imgAtaque" src="img/logo.png" alt="prueba">
-                <button class="btnU" id="btnAtacar">FIGHT</button>
+            <div class="containerAtaque ataque-fight">
+                <img class="imgAtaque" src="img/logo.png" alt="FIGHT">
+                <button class="btnU">FIGHT</button>
             </div>
-            <button class="btnU" id="btnActuar">ACT</button>
-            <button class="btnU" id="btnObjeto">ITEM</button>
-            <button class="btnU" id="btnPerdonar">HOLA</button>
+
+            <div class="containerAtaque ataque-act">
+                <button class="btnU" id="btnAtacar">
+                    <img class="imgAtaque" src="img/logo.png" alt="FIGHT icon">
+                    <span>ACT</span>
+                </button>
+            </div>
+
+            <div class="containerAtaque ataque-item">
+                <button class="btnU" id="btnAtacar">
+                    <img class="imgAtaque" src="img/logo.png" alt="FIGHT icon">
+                    <span>ITEM</span>
+                </button>
+            </div>
+
+            <div class="containerAtaque ataque-hola">
+                <button class="btnU" id="btnAtacar">
+                    <img class="imgAtaque" src="img/logo.png" alt="FIGHT icon">
+                    <span>HOLA</span>
+                </button>
+            </div>
+
+
+            <!-- <div class="containerAtaque">
+                <img class="imgAtaque" src="img/logo.png" alt="prueba">
+                <button class="btnU" id="btnActuar">ACT</button>
+
+            </div>
+            <div class="containerAtaque">
+                <img class="imgAtaque" src="img/logo.png" alt="prueba">
+                <button class="btnU" id="btnObjeto">ITEM</button>
+
+            </div>
+            <div class="containerAtaque">
+                <img class="imgAtaque" src="img/logo.png" alt="prueba">
+                <button class="btnU" id="btnPerdonar">HOLA</button>
+
+            </div> -->
+
         </div>
+    </div>
+    <div id="barraWena" style="display: none">
+        <div class="layer-1 bar"></div>
+        <div class="layer-2 bar"></div>
+        <div class="layer-3 bar"></div>
+        <div class="layer-4 bar"></div>
+        <div class="layer-5 bar"></div>
+        <div class="layer-6 bar"></div>
+        <div class="layer-7 bar"></div>
+        <div class="layer-8 bar"></div>
+        <div class="layer-9 bar"></div>
     </div>
 
 

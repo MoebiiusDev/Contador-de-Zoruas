@@ -53,55 +53,36 @@
 
 // loop();
 
+
+
 const imgZorua = document.getElementById("imgZorua");
-let posicionZorua = 50; // Empezamos en el centro (50%)
-let direccion = 1; // 1 = derecha, -1 = izquierda
+let posicionZorua = 50;
+let direccion = 1;
 
 function moverZorua() {
-    // Cambiar la posición de Zorua
-    posicionZorua += direccion * 2; // Cambia 2 a la velocidad deseada
+    posicionZorua += direccion * 0.2;
 
-    // Cambiar la dirección si llega a los bordes
-    if (posicionZorua >= 60 || posicionZorua <= 40) {
-        direccion *= -1; // Cambiar dirección
+    if (posicionZorua >= 55 || posicionZorua <= 50) {
+        direccion *= -1;
     }
 
-    imgZorua.style.left = `${posicionZorua}%`; // Aplicar nueva posición
+    imgZorua.style.left = `${posicionZorua}%`;
 }
 
-// Llamar a moverZorua cada 50ms (ajusta para velocidad)
-setInterval(moverZorua, 50);
+// 🔧 ¡Ahora guardamos el intervalo para poder detenerlo!
+let moverIntervalo = setInterval(moverZorua, 50);
 
 
-document.getElementById("btnAtacar").addEventListener("click", () => {
-    // Lógica para atacar a Zorua
-    atacarZorua();
-});
-
-document.getElementById("btnActuar").addEventListener("click", () => {
-    // Lógica para actuar (ejemplo: intentar huir, hacer un movimiento especial, etc.)
-    actuarContraZorua();
-});
-
-document.getElementById("btnObjeto").addEventListener("click", () => {
-    // Lógica para usar un objeto
-    usarObjeto();
-});
-
-document.getElementById("btnPerdonar").addEventListener("click", () => {
-    // Lógica para perdonar a Zorua
-    perdonarZorua();
-});
 
 
-function atacarZorua() {
-    const hpZorua = 100; // Cambiar a una variable global si lo necesitas
-    // Simulamos un ataque
-    const dano = 10; // Ejemplo de daño
-    hpZorua -= dano; // Restamos el daño
-    document.getElementById("mensajeZorua").textContent = `¡Zorua recibe ${dano} de daño!`;
-    // Actualiza la lógica de vida de Zorua, animaciones, etc.
-}
+// function atacarZorua() {
+//     const hpZorua = 100; // Cambiar a una variable global si lo necesitas
+//     // Simulamos un ataque
+//     const dano = 10; // Ejemplo de daño
+//     hpZorua -= dano; // Restamos el daño
+//     document.getElementById("mensajeZorua").textContent = `¡Zorua recibe ${dano} de daño!`;
+//     // Actualiza la lógica de vida de Zorua, animaciones, etc.
+// }
 
 function actuarContraZorua() {
     document.getElementById("mensajeZorua").textContent = "¡Zorua se burla de tu intento!";
@@ -114,5 +95,115 @@ function usarObjeto() {
 function perdonarZorua() {
     document.getElementById("mensajeZorua").textContent = "Has decidido perdonar a Zorua.";
 }
+
+
+
+
+
+
+const botones = document.querySelectorAll(".containerAtaque");
+let indiceSeleccionado = 0;
+
+// Marcar el botón seleccionado por defecto
+botones[indiceSeleccionado].classList.add("seleccionado");
+
+const sonidoSeleccion = new Audio("/sound/duck.mp3");
+
+function reproducirSonidoSeleccion() {
+    sonidoSeleccion.currentTime = 0; // Reinicia por si se reproduce rápido seguido
+    sonidoSeleccion.play();
+}
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") {
+        cambiarSeleccion(1);
+    } else if (e.key === "ArrowLeft") {
+        cambiarSeleccion(-1);
+    } else if (e.key === "Enter") {
+        ejecutarAccion(botones[indiceSeleccionado]);
+    }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Selección inicial
+    botones[indiceSeleccionado].classList.add("seleccionado");
+
+    const imgInicial = botones[indiceSeleccionado].querySelector(".imgAtaque");
+    if (imgInicial) imgInicial.src = "img/UndertaleEvent/Corazon.png";
+    // reproducirSonidoSeleccion();
+});
+
+
+function cambiarSeleccion(direccion) {
+    // Quitar imagen de corazón y estilo al botón anterior
+    const imgAnterior = botones[indiceSeleccionado].querySelector(".imgAtaque");
+    if (imgAnterior) imgAnterior.src = "/img/logo.png"; // Imagen original
+    botones[indiceSeleccionado].classList.remove("seleccionado");
+
+    // Cambiar índice
+    indiceSeleccionado = (indiceSeleccionado + direccion + botones.length) % botones.length;
+
+    // Añadir clase y cambiar a corazón
+    botones[indiceSeleccionado].classList.add("seleccionado");
+    const imgNueva = botones[indiceSeleccionado].querySelector(".imgAtaque");
+    if (imgNueva) imgNueva.src = "/img/UndertaleEvent/Corazon.png"; // Imagen de corazón
+    reproducirSonidoSeleccion();
+}
+
+
+function ejecutarAccion(boton) {
+    const texto = boton.innerText.trim();
+    switch (texto) {
+        case "FIGHT":
+            atacarZorua();
+            break;
+        case "ACT":
+            actuarContraZorua();
+            break;
+        case "ITEM":
+            usarObjeto();
+            break;
+        case "HOLA":
+            perdonarZorua(); // Asumiendo que HOLA es para perdonar
+            break;
+        default:
+            console.log("Acción no reconocida:", texto);
+    }
+}
+
+
+
+
+
+//* Perdonacion
+
+function perdonarZorua() {
+    const zorua = document.getElementById("imgZorua");
+    const fondo = document.getElementById("fondoOscuro");
+    const zonaBatalla = document.getElementById("zonaBatalla");
+    const barraWena = document.getElementById("barraWena");
+    const JefeUZ = document.getElementById("JefeUZ");
+
+
+    // Mostrar mensaje de paz
+    document.getElementById("mensajeZorua").textContent = "Has decidido perdonar a Zorua!!!.";
+
+    // Cambiar apariencia a oscura
+    zorua.style.filter = "brightness(0.5) grayscale(0.8)";
+    zorua.style.animation = "none"; // detener animación si está por CSS
+    clearInterval(moverIntervalo);
+
+    // Asegúrate que `moverIntervalo` sea accesible desde aquí
+    JefeUZ.pause();
+
+
+    // Opcional: Puedes hacer una animación suave de desvanecimiento
+    setTimeout(() => {
+        fondo?.classList.add("desaparecer-suave");
+        zonaBatalla?.classList.add("desaparecer-suave");
+        barraWena?.classList.add("desaparecer-suave");
+    }, 3000);
+}
+
 
 

@@ -20,10 +20,10 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
-    background-color: black;
+    height: 125vh;
+    /* background-color: black; */
     color: white;
-    z-index: 9999;
+    z-index: 10000;
     /* Asegura que esté por encima de todo */
     display: flex;
     flex-direction: column;
@@ -38,11 +38,6 @@
     border: 4px solid white;
     background-color: #111;
     margin-top: 30px;
-}
-
-#zonaBatalla {
-    text-align: center;
-    margin-top: 20px;
 }
 
 #fondoOscuro {
@@ -83,11 +78,17 @@
     font-family: 'Courier New', monospace;
 }
 
+#jefeZorua,
+#acciones {
+    width: 925px;
+}
+
+
 #jefeZorua {
     text-align: center;
     margin-bottom: 20px;
     position: relative;
-    width: 575px;
+    /* width: 840px; */
     height: 140px;
     border: 5px solid #fff;
     margin-top: -70px;
@@ -96,8 +97,8 @@
     color: #fff;
     font-family: "font", sans-serif;
     font-size: 17pt;
-    padding-left: 20px;
-    padding-top: 20px;
+    /* padding-left: 20px;
+    padding-top: 20px; */
 }
 
 #imgZorua {
@@ -113,70 +114,216 @@
     /* Para centrarlo bien */
 }
 
-#vidaJugador {
+#zonaBatalla {
     text-align: center;
-    margin-top: 10px;
-    font-size: 1.2em;
-    /* Tamaño de fuente más grande */
-    color: white;
-    /* Color de texto */
+    margin-top: 20px;
 }
+
+
+
+#infoJugador {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1.2em;
+    color: white;
+    margin-top: 10px;
+}
+
+.lv {
+    font-weight: bold;
+}
+
+.valor {
+    margin-left: 2px;
+}
+
+.hpLabel {
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.barraHp {
+    width: 16px;
+    height: 16px;
+    background-color: yellow;
+    margin: 0 4px;
+    border: 1px solid white;
+    box-sizing: border-box;
+}
+
+.vidaTotal {
+    font-weight: bold;
+}
+
 
 
 
 #acciones {
     display: flex;
-    justify-content: center;
-    gap: 10px;
-    /* margin-top: 20px; */
-    width: 575px;
+    justify-content: space-between;
+    gap: 50px;
     height: 70px;
+    margin-top: 20px;
 }
 
 .btnU {
-    background-color: #000000;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 7px;
+    background-color: #000;
     color: #ff872f;
     border: none;
-    border-radius: 0;
-    padding: 2px;
-    cursor: pointer;
-    /* transition: background-color 0.3s, transform 0.3s; */
     font-family: 'save', sans-serif;
-    font-size: 40px;
+    font-size: 52px;
+    cursor: pointer;
+    letter-spacing: -6px;
 }
 
-/* .btnU:hover {
-    border: 2px solid #fffc2f;
-    color: #fffc2f;
-} */
+
+.btnU span {
+    pointer-events: none;
+    /* para que el texto no interfiera con los clics */
+}
 
 #mensajeZorua {
-    padding: 0;
+    padding: 10px;
     text-align: left;
 }
 
 .containerAtaque {
-    width: 200px;
-    border: 2px solid #ff872f;
+    flex: 1;
     display: flex;
     align-items: center;
-    /* height: 100px; */
-    padding: 5px;
+    justify-content: center;
+    border: 2px solid #ff872f;
+    background-color: #000;
+    /* padding: 0; */
+    height: 100%;
+    box-sizing: border-box;
+    padding: 10px 0 10px 10px;
 }
 
-.containerAtaque:hover{
+.containerAtaque:hover {
     border: 2px solid #fffc2f;
     color: #fffc2f;
 }
 
-.containerAtaque:hover .btnU{
+.containerAtaque:hover .btnU {
     /* border: 2px solid #fffc2f; */
     color: #fffc2f;
 }
 
+.ataque-fight:hover .imgAtaque,
+.ataque-act:hover .imgAtaque,
+.ataque-item:hover .imgAtaque,
+.ataque-hola:hover .imgAtaque {
+    content: url("/img/UndertaleEvent/Corazon.png");
+}
 
 
-img.imgAtaque {
-    height: 48px;
-    width: 35px;
+
+.imgAtaque {
+    height: 25px;
+    width: 25px;
+    pointer-events: none;
+}
+
+
+
+
+/* Diseño de flechitas o otra seccion */
+
+
+.containerAtaque.seleccionado {
+    filter: brightness(1.2);
+    border: 2px solid #fffc2f;
+    color: #fffc2f;
+}
+
+.containerAtaque.seleccionado .btnU {
+    color: #fffc2f;
+}
+
+.containerAtaque.seleccionado .imgAtaque {
+    filter: brightness(1.5);
+}
+
+
+/* fondo trasero */
+
+#barraWena {
+    /* display: none; */
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    position: absolute;
+    width: 100vw;
+    bottom: 0;
+    z-index: 9999;
+    animation: scale-down-1 5s infinite;
+}
+
+#barraWena .bar{
+    height: 500px;
+}
+
+.layer-1.bar {
+    background: rgba(17, 41, 24, 0.212);
+
+}
+.layer-2.bar {
+    background: rgba(17, 41, 24, 0.541);
+
+}
+.layer-3.bar {
+    background: rgb(17, 41, 24);
+
+}
+.layer-4.bar {
+    background: rgb(25, 59, 35);
+}
+.layer-5.bar {
+    background: rgb(35, 82, 49);
+}
+.layer-6.bar {
+    background: rgb(53, 124, 74);
+}
+.layer-7.bar {
+    background: rgb(74, 173, 103);
+}
+.layer-8.bar {
+    background: rgb(90, 211, 126);
+
+}
+.layer-9.bar {
+    background: rgb(109, 255, 153);
+}
+
+
+
+@keyframes scale-down-1 {
+    0% {
+        height: 617px;
+    }
+    50% {
+        height: 300px;
+    }
+    
+    100% {
+        height: 617px;
+    }
+}
+
+
+/* Perdonacion */
+.desaparecer-suave {
+    opacity: 0 !important;
+    transition: opacity 2s ease;
+    pointer-events: none;
 }

@@ -253,21 +253,21 @@ function iniciarBatallaUndertaleZorua() {
         fondo.style.opacity = "1";
     }, 10);
 
-    setTimeout(() => {
-        const preBoss = document.getElementById("preBoss");
-        preBoss.style.display = "flex";
+    // setTimeout(() => {
+    //     const preBoss = document.getElementById("preBoss");
+    //     preBoss.style.display = "flex";
 
 
-        const sonidoDuck = document.getElementById("sonidoDuck");
-        sonidoDuck.play();
-    }, 8000);
-    setTimeout(() => {
-        const preBoss2 = document.getElementById("preBoss2");
-        const sonidoPreBoss2 = document.getElementById("sonidoPreBoss2");
-        sonidoPreBoss2.play();
-        preBoss.style.display = "none";
-        preBoss2.style.display = "flex";
-    }, 10500);
+    //     const sonidoDuck = document.getElementById("sonidoDuck");
+    //     sonidoDuck.play();
+    // }, 8000);
+    // setTimeout(() => {
+    //     const preBoss2 = document.getElementById("preBoss2");
+    //     const sonidoPreBoss2 = document.getElementById("sonidoPreBoss2");
+    //     sonidoPreBoss2.play();
+    //     preBoss.style.display = "none";
+    //     preBoss2.style.display = "flex";
+    // }, 10500);
 
 
     setTimeout(() => {
@@ -279,11 +279,9 @@ function iniciarBatallaUndertaleZorua() {
         barraWena.style.display = "flex";
 
         document.getElementById("zonaBatalla").style.display = "flex";
-        // document.getElementById("otrasCosas").style.display = "none";
         document.body.style.overflow = "hidden";
-        iniciarCanvasUndertale();
-        fondo.style.display = "none";
-    }, 12000);
+        // fondo.style.display = "none";
+    }, 1000);
 }
 
 
